@@ -1,5 +1,3 @@
-use std::os::macos::raw::stat;
-
 use status::ParseStatusError;
 
 use crate::status::Status;
