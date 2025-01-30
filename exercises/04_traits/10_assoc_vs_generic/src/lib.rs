@@ -13,6 +13,45 @@
 // You don't have to though: it's perfectly okay to write three separate
 // implementations manually. Venture further only if you're curious.
 
+pub trait Power<POW> {
+    type Output;
+
+    fn power(self: Self, pow: POW) -> Self::Output;
+}
+
+impl Power<u16> for u32 {
+    type Output = u32;
+    fn power(self, pow: u16) -> Self::Output {
+        let mut result = 1;
+        for i in 0..pow{
+            result *= self;
+        }
+        result
+    }
+}
+
+impl Power<u32> for u32 {
+    type Output = u32;
+    fn power(self, pow: u32) -> Self::Output {
+        let mut result = 1;
+        for i in 0..pow{
+            result *= self;
+        }
+        result
+    }
+}
+
+impl Power<&u32> for u32 {
+    type Output = u32;
+    fn power(self, pow: &u32) -> Self::Output {
+        let mut result = 1;
+        for i in 0..(*pow) {
+            result *= self;
+        }
+        result
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::Power;
